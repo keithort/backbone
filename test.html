@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <title>Title</title>
+</head>
+<body>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+<script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+
+<script>
+$.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+  options.crossDomain = {
+   crossDomain: true
+  };
+  options.xhrFields = {
+   withCredentials: true
+  };
+});
+
+var App = {
+  Views: {},
+  Models: {},
+  Collections: {}
+};
+
+window.template = function(id) {
+  return _.template( $('#' + id).html());
+};
+
+App.Models.Scores = Backbone.Model.extend({});
+
+App.Collections.Scores = Backbone.Collection.extend({
+    model: App.Models.Scores,
+    url: 'http://tgcapiscoring.golfchannel.com/api/leaderboardjson?id=16432&Top=5',
+    parse: function(response) {
+      return response.results;
+    }
+});
+
+App.Collections.scores = new App.Collections.Scores();
+
+App.Collections.scores.fetch({
+  success: function() {
+    var scoresView = new App.Views.scores({});
+    var data = JSON.parse(scoresView);
+    console.log(data);
+  },
+  error: function() {
+    console.log('error');
+  },
+  parse: function(response) {
+    return response;
+  }
+});
+
+App.Views.scores = Backbone.View.extend({
+  initialize: function() {
+    this.render();
+  },
+  render: function() {
+    return this.$el.html();
+  }
+});
+</script>
+
+</body>
+</html>
