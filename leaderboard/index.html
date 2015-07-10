@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <title>Leaderboard Widget</title>
+ <link rel="stylesheet" href="styles/styles.css" type="stylesheet">
+</head>
+<body>
+
+<div id="leaderboard">
+ <div class="tournamentName"></div>
+ <div class="tourName"></div>
+ <div class="scores"></div>
+</div>
+
+<!-- Underscore mini-templates -->
+<script type="text/template" id="player-template">
+  <div class="player">
+   <div class="pos">position here</div>
+   <div class="rank"></div>
+   <div class="name"></div>
+   <div class="thru"></div>
+   <div class="total"></div>
+  </div>
+</script>
+
+<!-- Load library scripts -->
+<script src="../js/lib/jquery.min.js"></script>
+<script src="../js/lib/underscore.js"></script>
+<script src="../js/lib/backbone.js"></script>
+
+<!-- Load app -->
+<script src="js/app.js"></script>
+
+</body>
+</html>

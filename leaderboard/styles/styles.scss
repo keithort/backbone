@@ -1,0 +1,29 @@
+#leaderboard {
+ font: {
+  family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  size: 14px;
+ }
+ max-width: 350px;
+}
+.tournamentName {
+ font-size: 20px;
+ font-weight: 700;
+}
+
+.player {
+ line-height: 2.5;
+ &:nth-child(odd) {
+  background-color: #f1f1f1;
+ }
+ div {
+  display: inline-block;
+  vertical-align: top;
+  &:not(.name) {
+   text-align: center;
+   width: 45px;
+  }
+  &.name {
+   width: 150px;
+  }
+ }
+}
